@@ -58,6 +58,7 @@
 
 	<ItemGroup>
 	  <MauiXaml Remove="StartPage.xaml" />
+	  <MauiXaml Remove="Valgusfloor.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -66,6 +67,9 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="StartPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Valgusfloor.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	</ItemGroup>
@@ -77,6 +81,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="FigurePage.xaml.cs">
+	    <DependentUpon>FigurePage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="StartPage.xaml.cs">
 	    <DependentUpon>StartPage.xaml</DependentUpon>
 	  </Compile>
