@@ -121,6 +121,7 @@ namespace MauiApp1;
             Content = st;
         }
 
+
         private void Tap_Tapped(object sender, EventArgs e)
         {
             BoxView circle = sender as BoxView;
@@ -181,7 +182,7 @@ namespace MauiApp1;
         {
             red.Color = Colors.Black;
             green.Color = Colors.Black;
-            yellow.Color = Color.FromRgb(255, 255, 0); // Максимально яркий желтый
+            yellow.Color = Color.FromRgb(255, 255, 0); 
 
             await Task.Delay(500);
 
