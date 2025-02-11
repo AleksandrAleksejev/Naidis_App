@@ -68,6 +68,14 @@ namespace MauiApp1;
             };
             start.Clicked += Start_Clicked;
 
+            Button start_night = new Button
+            {
+                Text = "Night",
+                BackgroundColor = Colors.AliceBlue,
+                TextColor = Colors.Black,
+            };
+        start_night.Clicked += Start_Clicked_night;
+
             Button finish = new Button
             {
                 Text = "Finish",
@@ -97,7 +105,7 @@ namespace MauiApp1;
 
             StackLayout st3 = new StackLayout
             {
-                Children = { start, finish, Tagasi_btn },
+                Children = { start, finish, start_night, Tagasi_btn },
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.Center,
             };
@@ -165,8 +173,25 @@ namespace MauiApp1;
                 await Task.Delay(500);
             }
         }
+    async void Start_Clicked_night(object sender, EventArgs e)
+    {
+        onoff = true;
 
-        async void Finish_Clicked(object sender, EventArgs e)
+        while (onoff)
+        {
+            red.Color = Colors.Black;
+            green.Color = Colors.Black;
+            yellow.Color = Color.FromRgb(255, 255, 0); // Максимально яркий желтый
+
+            await Task.Delay(500);
+
+            yellow.Color = Colors.Black;
+
+            await Task.Delay(500);
+        }
+    }
+
+    async void Finish_Clicked(object sender, EventArgs e)
         {
             onoff = false;
             await Task.Delay(500);
@@ -175,4 +200,4 @@ namespace MauiApp1;
             red.Color = Colors.Black;
         }
     }
-
+    

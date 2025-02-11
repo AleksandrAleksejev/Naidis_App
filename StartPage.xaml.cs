@@ -1,22 +1,24 @@
+using Naidis_App;
+
 namespace MauiApp1;
 
 public partial class StartPage : ContentPage
 {
-	public List<ContentPage> lehed = new List<ContentPage>() { new TextPage(0), new FigurePage(), new Valgusfloor() };
+	public List<ContentPage> lehed = new List<ContentPage>() { new TextPage(0), new FigurePage(1), new Valgusfloor() };
 	public List<string> Tekstid = new List<string>{"Tee lahti TekstPage", "Tee lahti Figure", "Tee lahti Valgusfoor" };
 	ScrollView sv;
 	VerticalStackLayout vsl;
 	public StartPage()
 	{
 		Title = "Avaleht";
-		vsl = new VerticalStackLayout { BackgroundColor = Color.FromRgb(0, 160, 255) };
+		vsl = new VerticalStackLayout { BackgroundColor = Color.FromRgb(169, 169, 169) };
 		for (int i = 0; i < Tekstid.Count; i++)
 		{
 			Button nupp = new Button
 			{
 				Text = Tekstid[i],
-				BackgroundColor = Color.FromRgb(1, 196, 255),
-				TextColor = Color.FromRgb(1, 0, 0),
+				BackgroundColor = Color.FromRgb(245, 255, 250),
+				TextColor = Color.FromRgb(0, 0, 0),
 				BorderWidth = 10,
 				ZIndex = i,
 				FontFamily="Dis"
