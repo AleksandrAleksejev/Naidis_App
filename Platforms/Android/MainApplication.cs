@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Runtime;
+using MauiApp1;
 
 namespace Naidis_App
 {

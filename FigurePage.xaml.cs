@@ -1,8 +1,12 @@
 namespace MauiApp1;
 
-public partial class Figure : ContentPage
+public partial class FigurePage : ContentPage
 {
-	public Figure()
+    public FigurePage()
+    {
+    }
+
+    public FigurePage(int zIndex)
 	{
 		InitializeComponent();
 	}

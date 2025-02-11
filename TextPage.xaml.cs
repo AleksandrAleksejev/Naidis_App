@@ -72,7 +72,7 @@ public partial class TextPage : ContentPage
         }
         else
         {
-            await Navigation.PushAsync(new Figure(btn.ZIndex));
+            await Navigation.PushAsync(new FigurePage(btn.ZIndex));
         }
 
 

@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls; // Добавлено для MAUI
 
-namespace Valgusfoor
-{
-    public partial class Valgusfoor : ContentPage
+namespace MauiApp1;
+
+    public partial class Valgusfloor : ContentPage
     {
         BoxView red, yellow, green;
         bool onoff;
         Label sonad;
 
-        public Valgusfoor()
+        public Valgusfloor()
         {
 
             Button Tagasi_btn = new Button
@@ -175,4 +175,4 @@ namespace Valgusfoor
             red.Color = Colors.Black;
         }
     }
-}
+
