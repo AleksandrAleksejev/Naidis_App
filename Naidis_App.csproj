@@ -59,6 +59,7 @@
 
 	<ItemGroup>
 	  <MauiXaml Remove="DateTimePage.xaml" />
+	  <MauiXaml Remove="Lumememm.xaml" />
 	  <MauiXaml Remove="RGB.xaml" />
 	  <MauiXaml Remove="StartPage.xaml" />
 	  <MauiXaml Remove="Stepper_Slider.xaml" />
@@ -72,6 +73,9 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="DateTimePage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Lumememm.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="RGB.xaml">
