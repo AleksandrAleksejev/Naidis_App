@@ -20,7 +20,7 @@ public partial class Lumememm : ContentPage
         random = new Random();
         AbsoluteLayout layout = new AbsoluteLayout();
 
-        // Создание частей снеговика
+        
         bucket = new BoxView { Color = Colors.Brown, WidthRequest = 50, HeightRequest = 30 };
         head = new Ellipse { Stroke = Colors.Black, StrokeThickness = 2, Fill = Colors.White, WidthRequest = 60, HeightRequest = 60 };
         body = new Ellipse { Stroke = Colors.Black, StrokeThickness = 2, Fill = Colors.White, WidthRequest = 80, HeightRequest = 80 };
@@ -30,7 +30,7 @@ public partial class Lumememm : ContentPage
         leftArm = new BoxView { Color = Colors.Brown, WidthRequest = 50, HeightRequest = 20 };
         rightArm = new BoxView { Color = Colors.Brown, WidthRequest = 50, HeightRequest = 20 };
 
-        // Установка позиций
+        
         AbsoluteLayout.SetLayoutBounds(bucket, new Rect(75, 20, 50, 30));
         AbsoluteLayout.SetLayoutBounds(head, new Rect(70, 50, 60, 60));
         AbsoluteLayout.SetLayoutBounds(body, new Rect(60, 110, 80, 80));
@@ -82,14 +82,14 @@ public partial class Lumememm : ContentPage
             }
         };
 
-        // Ползунок прозрачности
+        
         Slider opacitySlider = new Slider { Minimum = 0, Maximum = 1, Value = 1 };
         opacitySlider.ValueChanged += (s, e) =>
         {
             head.Opacity = body.Opacity = e.NewValue;
         };
 
-        // Степпер изменения размера
+        
         Stepper sizeStepper = new Stepper { Minimum = 0.5, Maximum = 2, Increment = 0.1, Value = 1 };
         sizeStepper.ValueChanged += (s, e) =>
         {

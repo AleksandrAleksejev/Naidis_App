@@ -32,7 +32,7 @@ public partial class RGB : ContentPage
             Color = Colors.Black,
         };
 
-        AbsoluteLayout.SetLayoutBounds(box, new Rect(0.1f, 0f, 400f, 400f));  // Исправлено
+        AbsoluteLayout.SetLayoutBounds(box, new Rect(0.1f, 0f, 400f, 400f));  
         AbsoluteLayout.SetLayoutFlags(box, AbsoluteLayoutFlags.PositionProportional);
         abs.Children.Add(box);
 
@@ -40,7 +40,7 @@ public partial class RGB : ContentPage
         {
             Slider slider = new Slider
             {
-                AutomationId = i.ToString(), // Вместо TabIndex
+                AutomationId = i.ToString(), 
                 Minimum = 0,
                 Maximum = 255,
                 Value = 0,
@@ -64,14 +64,14 @@ public partial class RGB : ContentPage
             stackLayout.Children.Add(slider);
         }
 
-        AbsoluteLayout.SetLayoutBounds(stackLayout, new Rect(0.1f, 1.17f, 400f, 400f));  // Исправлено
+        AbsoluteLayout.SetLayoutBounds(stackLayout, new Rect(0.1f, 1.17f, 400f, 400f));  
         AbsoluteLayout.SetLayoutFlags(stackLayout, AbsoluteLayoutFlags.PositionProportional);
         abs.Children.Add(stackLayout);
 
         Button button = new Button { Text = "Random Color" };
         button.Clicked += Button_Clicked;
 
-        AbsoluteLayout.SetLayoutBounds(button, new Rect(0.1f, 0.9f, 400f, 50f));  // Исправлено
+        AbsoluteLayout.SetLayoutBounds(button, new Rect(0.1f, 0.9f, 400f, 50f));  
         AbsoluteLayout.SetLayoutFlags(button, AbsoluteLayoutFlags.PositionProportional);
         abs.Children.Add(button);
 
@@ -85,17 +85,17 @@ public partial class RGB : ContentPage
             ints[i] = rnd.Next(256);
             sliderList[i].Value = ints[i];
         }
-        box.Color = new Color(ints[0] / 255f, ints[1] / 255f, ints[2] / 255f);  // Исправлено
+        box.Color = new Color(ints[0] / 255f, ints[1] / 255f, ints[2] / 255f);  
     }
 
     void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
     {
         Slider slider = (Slider)sender;
-        int index = int.Parse(slider.AutomationId); // Получаем индекс
+        int index = int.Parse(slider.AutomationId); 
 
         ints[index] = Convert.ToInt32(e.NewValue);
         labelList[index].Text = $"{labelListText[index]} = {ints[index]:X2}";
 
-        box.Color = new Color(ints[0] / 255f, ints[1] / 255f, ints[2] / 255f);  // Исправлено
+        box.Color = new Color(ints[0] / 255f, ints[1] / 255f, ints[2] / 255f);  
     }
 }
