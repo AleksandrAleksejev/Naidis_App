@@ -9,16 +9,18 @@ namespace MauiApp1;
     [XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class Lumememm : ContentPage
 {
-    private readonly BoxView bucket ,leftArm, rightArm;
+    private readonly BoxView bucket, leftArm, rightArm;
     private readonly Ellipse head, body, leftEye, rightEye;
     private readonly Polygon nose;
     private readonly Random random;
+    private readonly StackLayout buttonStack; 
 
     public Lumememm()
     {
         random = new Random();
         AbsoluteLayout layout = new AbsoluteLayout();
 
+        // Создание частей снеговика
         bucket = new BoxView { Color = Colors.Brown, WidthRequest = 50, HeightRequest = 30 };
         head = new Ellipse { Stroke = Colors.Black, StrokeThickness = 2, Fill = Colors.White, WidthRequest = 60, HeightRequest = 60 };
         body = new Ellipse { Stroke = Colors.Black, StrokeThickness = 2, Fill = Colors.White, WidthRequest = 80, HeightRequest = 80 };
@@ -28,6 +30,7 @@ public partial class Lumememm : ContentPage
         leftArm = new BoxView { Color = Colors.Brown, WidthRequest = 50, HeightRequest = 20 };
         rightArm = new BoxView { Color = Colors.Brown, WidthRequest = 50, HeightRequest = 20 };
 
+        // Установка позиций
         AbsoluteLayout.SetLayoutBounds(bucket, new Rect(75, 20, 50, 30));
         AbsoluteLayout.SetLayoutBounds(head, new Rect(70, 50, 60, 60));
         AbsoluteLayout.SetLayoutBounds(body, new Rect(60, 110, 80, 80));
@@ -46,6 +49,7 @@ public partial class Lumememm : ContentPage
         layout.Children.Add(leftArm);
         layout.Children.Add(rightArm);
 
+        
         Button toggleButton = new Button { Text = "Peida lumememm" };
         toggleButton.Clicked += (s, e) =>
         {
@@ -53,42 +57,9 @@ public partial class Lumememm : ContentPage
             bucket.IsVisible = head.IsVisible = body.IsVisible = leftEye.IsVisible = rightEye.IsVisible = nose.IsVisible = leftArm.IsVisible = rightArm.IsVisible = isVisible;
             toggleButton.Text = isVisible ? "Peida lumememm" : "Näita lumememme";
         };
+
+        
         Button randomColorButton = new Button { Text = "Random värvi" };
-        randomColorButton.Clicked += (s, e) =>
-        {
-            head.Fill = new SolidColorBrush(Color.FromRgb(random.Next(256), random.Next(256), random.Next(256)));
-            body.Fill = new SolidColorBrush(Color.FromRgb(random.Next(256), random.Next(256), random.Next(256)));
-            bucket.Color = Color.FromRgb(random.Next(256), random.Next(256), random.Next(256));
-            leftEye.Fill = new SolidColorBrush(Color.FromRgb(random.Next(256), random.Next(256), random.Next(256)));
-            rightEye.Fill = new SolidColorBrush(Color.FromRgb(random.Next(256), random.Next(256), random.Next(256)));
-            nose.Fill = new SolidColorBrush(Color.FromRgb(random.Next(256), random.Next(256), random.Next(256)));
-            leftArm.Color = Color.FromRgb(random.Next(256), random.Next(256), random.Next(256));
-            rightArm.Color = Color.FromRgb(random.Next(256), random.Next(256), random.Next(256));
-        };
-
-        Slider opacitySlider = new Slider { Minimum = 0, Maximum = 1, Value = 1 };
-        opacitySlider.ValueChanged += (s, e) =>
-        {
-            head.Opacity = body.Opacity = e.NewValue;
-        };
-
-        Stepper sizeStepper = new Stepper { Minimum = 0.5, Maximum = 2, Increment = 0.1, Value = 1 };
-        sizeStepper.ValueChanged += (s, e) =>
-        {
-            head.WidthRequest = 60 * e.NewValue;
-            head.HeightRequest = 60 * e.NewValue;
-            body.WidthRequest = 80 * e.NewValue;
-            body.HeightRequest = 80 * e.NewValue;
-        };
-
-        StackLayout buttonStack = new StackLayout
-        {
-            Children = { toggleButton, randomColorButton, opacitySlider, sizeStepper },
-            Orientation = StackOrientation.Vertical
-        };
-
-        Content = new StackLayout { Children = { layout, buttonStack } };
-        Button randomColorButton1 = new Button { Text = "Random värvi" };
         randomColorButton.Clicked += async (s, e) =>
         {
             int r = random.Next(0, 255);
@@ -103,26 +74,49 @@ public partial class Lumememm : ContentPage
             {
                 head.Fill = new SolidColorBrush(Color.FromRgb(r, g, b));
                 body.Fill = new SolidColorBrush(Color.FromRgb(r, g, b));
-                bucket.Color = Color.FromRgb(r, g, b);
-                leftEye.Fill = new SolidColorBrush(Color.FromRgb(r, g, b));
-                rightEye.Fill = new SolidColorBrush(Color.FromRgb(r, g, b));
-                nose.Fill = new SolidColorBrush(Color.FromRgb(r, g, b));
-                leftArm.Color = Color.FromRgb(r, g, b);
-                rightArm.Color = Color.FromRgb(r, g, b);
             }
             else
             {
-                head.Fill = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-                body.Fill = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-                bucket.Color = Color.FromRgb(0, 0, 0);
-                leftEye.Fill = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-                rightEye.Fill = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-                nose.Fill = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-                leftArm.Color = Color.FromRgb(0, 0, 0);
-                rightArm.Color = Color.FromRgb(0, 0, 0);
+                head.Fill = new SolidColorBrush(Colors.Black);
+                body.Fill = new SolidColorBrush(Colors.Black);
             }
         };
 
+        // Ползунок прозрачности
+        Slider opacitySlider = new Slider { Minimum = 0, Maximum = 1, Value = 1 };
+        opacitySlider.ValueChanged += (s, e) =>
+        {
+            head.Opacity = body.Opacity = e.NewValue;
+        };
+
+        // Степпер изменения размера
+        Stepper sizeStepper = new Stepper { Minimum = 0.5, Maximum = 2, Increment = 0.1, Value = 1 };
+        sizeStepper.ValueChanged += (s, e) =>
+        {
+            head.WidthRequest = 60 * e.NewValue;
+            head.HeightRequest = 60 * e.NewValue;
+            body.WidthRequest = 80 * e.NewValue;
+            body.HeightRequest = 80 * e.NewValue;
+        };
+
+        
+        buttonStack = new StackLayout
+        {
+            Children = { toggleButton, randomColorButton, opacitySlider, sizeStepper },
+            Orientation = StackOrientation.Vertical,
+            HorizontalOptions = LayoutOptions.Center,
+            VerticalOptions = LayoutOptions.End
+        };
+
+        
+        Content = new Grid
+        {
+            Children =
+            {
+                layout,    
+                buttonStack 
+            }
+        };
     }
 
 }
