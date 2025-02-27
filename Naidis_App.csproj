@@ -61,15 +61,21 @@
 	  <MauiXaml Remove="DateTimePage.xaml" />
 	  <MauiXaml Remove="Lumememm.xaml" />
 	  <MauiXaml Remove="PickerImagePage.xaml" />
+	  <MauiXaml Remove="PopPage.xaml" />
 	  <MauiXaml Remove="RGB.xaml" />
+	  <MauiXaml Remove="ScorePage.xaml" />
 	  <MauiXaml Remove="StartPage.xaml" />
 	  <MauiXaml Remove="Stepper_Slider.xaml" />
+	  <MauiXaml Remove="Tripstrapstrull.xaml" />
 	  <MauiXaml Remove="Valgusfloor.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\Lugoj Demo 400.otf" />
+	  <None Remove="Resources\Images\circle.png" />
+	  <None Remove="Resources\Images\cross.png" />
 	  <None Remove="Resources\Images\road.jpg" />
+	  <None Remove="Resources\Images\white.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -82,13 +88,22 @@
 	  <EmbeddedResource Include="PickerImagePage.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="PopPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="RGB.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="ScorePage.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="StartPage.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Stepper_Slider.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Tripstrapstrull.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Valgusfloor.xaml">
