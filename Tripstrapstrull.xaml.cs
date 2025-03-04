@@ -174,24 +174,35 @@ namespace MauiApp1;
         {
             for (int j = 0; j < 3; j++)
             {
+                Frame frame = new Frame
+                {
+                    BorderColor = Colors.Black, // Цвет границы
+                    CornerRadius = 0, // Убираем скругление углов
+                    Padding = 2, // Отступ для улучшения вида
+                    HasShadow = false // Убираем тень
+                };
+
                 Image image = new Image
                 {
-                    HeightRequest = 100,  // Размер клетки
+                    HeightRequest = 100,
                     WidthRequest = 100,
                     Source = white.Source,
                     HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center
                 };
+
                 TapGestureRecognizer tap = new TapGestureRecognizer();
                 tap.Tapped += Tap_Tapped;
                 image.GestureRecognizers.Add(tap);
                 images.Add(image);
 
-                grid.Children.Add(image);
-                Grid.SetRow(image, i);
-                Grid.SetColumn(image, j);
+                frame.Content = image; // Вставляем изображение внутрь рамки
+                grid.Children.Add(frame);
+                Grid.SetRow(frame, i);
+                Grid.SetColumn(frame, j);
             }
         }
+
     }
 
     void Voidu_kontroll()
