@@ -72,6 +72,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\Lugoj Demo 400.otf" />
+	  <None Remove="Resources\Images\bob.jpg" />
 	  <None Remove="Resources\Images\circle.png" />
 	  <None Remove="Resources\Images\cross.png" />
 	  <None Remove="Resources\Images\road.jpg" />
