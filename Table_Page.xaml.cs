@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Maui.Controls;
 
 using System.Collections.Generic;
@@ -80,6 +80,9 @@ public partial class Table_Page : ContentPage
         Button greetingBtn = new Button { Text = "Õnnitlused" };
         greetingBtn.Clicked += GreetingBtn_Clicked;
 
+        Button cameraBtn = new Button { Text = "Photo" };
+        cameraBtn.Clicked += Button_ClickedAsync;
+
         Grid actionStackLayout = new Grid
         {
             HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -88,7 +91,8 @@ public partial class Table_Page : ContentPage
                 new ColumnDefinition { Width = GridLength.Star },
                 new ColumnDefinition { Width = GridLength.Star },
                 new ColumnDefinition { Width = GridLength.Star },
-                new ColumnDefinition { Width = GridLength.Star }
+                new ColumnDefinition { Width = GridLength.Star },
+                 new ColumnDefinition { Width = GridLength.Star }
             }
         };
         actionStackLayout.Children.Add(callBtn);
@@ -102,6 +106,9 @@ public partial class Table_Page : ContentPage
 
         actionStackLayout.Children.Add(greetingBtn);
         Grid.SetColumn(greetingBtn, 3);
+
+        actionStackLayout.Children.Add(cameraBtn);
+        Grid.SetColumn(cameraBtn, 4);
 
 
 
@@ -217,4 +224,36 @@ public partial class Table_Page : ContentPage
             }
         });
     }
+
+    private async void Button_ClickedAsync(object sender, EventArgs e)
+    {
+        if (MediaPicker.Default.IsCaptureSupported)
+        {
+            FileResult myPhoto = await MediaPicker.Default.CapturePhotoAsync();
+            if (myPhoto != null)
+            {
+                string localFilePath = Path.Combine(FileSystem.AppDataDirectory, myPhoto.FileName);
+                using (Stream sourceStream = await myPhoto.OpenReadAsync())
+                using (FileStream localFileStream = File.Create(localFilePath))
+                {
+                    await sourceStream.CopyToAsync(localFileStream);
+                }
+
+                // Убедимся, что файл еще доступен
+                if (File.Exists(localFilePath))
+                {
+                    ic.ImageSource = ImageSource.FromFile(localFilePath);
+                }
+                else
+                {
+                    await DisplayAlert("Ошибка", "Файл был удален или недоступен", "OK");
+                }
+            }
+        }
+        else
+        {
+            await DisplayAlert("OOPS", "Midagi läks valesti", "OK");
+        }
+    }
+
 }
